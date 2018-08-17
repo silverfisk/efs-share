@@ -1,0 +1,16 @@
+- block:
+  - name: Add {{ item }} EFS-share for {{ Application }}
+    efs:
+      state: "{{ efs_shares[item].state  }}"
+      name: "{{ Application }}_{{ item }}"
+      performance_mode: "{{ efs_shares[item].performance_mode }}"
+      encrypt: yes
+      wait: yes
+      targets: "{{ efs_shares[item].targets  }}"
+      tags:
+        Name: "{{ Application }}_{{ item }}"
+        EnvironmentClass: "{{ EnvironmentClass }}"
+        Owner: "{{ OwnerEmail }}"
+        CostCenter: "{{ CostCenter }}"
+        Application: "{{ Application }}"
+        Tier: "{{ ApplicationTier }}"

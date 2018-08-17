@@ -1,0 +1,7 @@
+---
+  - block:
+    - include_tasks: efs_create_share.yaml
+      when: efs_shares is defined
+      with_items: "{{ efs_shares }}"
+      tags:
+        - efs_shares
